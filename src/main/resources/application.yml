@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: shopease
+  datasource:
+    url: jdbc:mysql://localhost:3306/shopease_db # Mets l'URL correcte vers ta BDD
+    username: skydev
+    password: skydev
+    driver-class-name: com.mysql.cj.jdbc.Driver # Indique bien le driver MySQL
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update # "create-drop" détruit la BDD à chaque redémarrage, préfères "update" pour commencer
+    properties:
+      hibernate:
+        format_sql: true # Pour un SQL plus lisible dans la console
+
+server:
+  servlet:
+    context-path: /api # Parfait, ton API sera accessible avec ce préfixe
