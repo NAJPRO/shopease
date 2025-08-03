@@ -41,10 +41,12 @@ public class Stock {
     @Column(nullable = false)
     private Integer quantity;
     
+    @Column(columnDefinition = "Seuil d'alerte")
     private Integer threshold;
 
     @Enumerated(EnumType.STRING)
-    private StockStatus status;
+    @Column(nullable = false)
+    private StockStatus status = StockStatus.IN_STOCK;
 
     @CreationTimestamp
     @Column(updatable = false)

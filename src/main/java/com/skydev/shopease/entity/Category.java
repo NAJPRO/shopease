@@ -41,7 +41,7 @@ public class Category {
     private String name;
 
     private String description;
-    private String picture;
+    //private String picture;
 
     @Column(unique = true, nullable = false)
     private String slug;

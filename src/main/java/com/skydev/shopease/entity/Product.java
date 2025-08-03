@@ -41,8 +41,8 @@ public class Product {
     private String title;
 
     @ManyToOne
-    @JoinColumn(name = "admin_user_id", nullable = false)
-    private AdminUser adminUser;
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
@@ -51,16 +51,28 @@ public class Product {
     @Column(unique = true, nullable = false)
     private String slug;
 
-    private String description;
+    private boolean isFeatured = false;
 
     @Column(nullable = false)
+    private boolean isActive = true;
+
+    @Column(precision = 10, scale = 2)
+    private BigDecimal promotionalPrice;
+
+    @Column(nullable = false)
+    private String description;
+
+    @Column(precision = 12, scale = 4, nullable = false)
     private BigDecimal price;
 
     private String picture;
 
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
-
+    
+    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Stock stock;
+    
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;
@@ -68,7 +80,5 @@ public class Product {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToOne(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Stock stock;
 
 }

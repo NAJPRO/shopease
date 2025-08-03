@@ -1,0 +1,43 @@
+
+
+📅 Date : [Ex : Vendredi 1er août 2025]
+
+🎯 Objectif(s) du jour :
+- Structurer le projet spring boot : Controller, Service, Repository, DTO, Mapper
+
+🕓 Temps dispo aujourd’hui :
+   3h (soir uniquement)
+
+🗂️ Priorité absolue :
+   Comprendre les relations Repository, DTO et Mapper
+   Mettre en place le plan de travaille de la journée
+   Ressortir les fonctionnalité qui seront faites
+
+🔥 Motivation du jour :
+   Je ne cherche pas l'inspiration, je crée l'élan. Je ne subis pas mon avenir, je le code.
+
+🎮 XP bonus si j’y arrive :
+   Gagner 5 XP + Me récompenser avec un épisode de podcast ou un petit moment chill.
+
+⚠️ Risque / distraction potentielle :
+   Fatigue après le boulot → je prévois une session intense mais courte.
+
+✅ Intention du jour (en une phrase) :
+   Même fatigué, je garde la cadence. Je me lève pour progresser, pas pour me plaindre.
+
+Aujourd’hui, je veux que tu sois mon cerveau stratégique.
+Objectif: structurer le projet Spring Boot. Je vais créer une application web (API) en spring boot (shopease). J'ai déjà mis en place les entity suivante : (AdminUser, Product, Order, OrderItem, Category, Customer, Invoice, OrderStatusHistory, Payment, Stock). 
+Le but étant de concevoir une application de gestion d'une boutique en ligne par un particulier.
+Ta mission :
+    a. Identifier les manquement dans la conception actuelle des entity et me les rapporter.
+    b. Proposer une solution de structuration du projet en utilisant les bonnes pratiques de Spring Boot
+    c. Me dire clairement ce que je dois réaliser aujourd’hui (Controller, Service, Repository, DTO, Mapper)
+    d. Après avoir valider la fonctionnalité à dévelloppé aujourd’hui il faudra établir un plan d'action pour y arriver (Structurer tout en sprint court)
+    e. Identifier la faisabilité et la complexité de chaque tâche
+    f. Si besoin, me poser des questions complémentaires pour affiner ta compréhension.
+    g. Me donner des conseils pour bien structurer le projet.
+    h. Me donner le nombre d'XP à gagner par tâche accompli.
+
+Important : fais ce travail étape par étape, sans aller trop vite. On ne passe à l’étape suivante que quand je valide la précédente. L'objectif est de réaliser tout ce qu'on mettra en place aujourd'hui. Je veux que tu sois mon guide, mon mentor, mon coach. 
+
+Tu es le cerveau. Je suis le robot d’exécution. C’est toi qui dois me dire quoi faire pour maximiser mon avancement vers mes objectifs.

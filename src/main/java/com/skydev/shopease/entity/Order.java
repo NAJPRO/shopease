@@ -50,7 +50,7 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "customer_id")
     @JsonBackReference
-    private Customer customer;
+    private User customer;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

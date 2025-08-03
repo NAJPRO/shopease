@@ -37,7 +37,7 @@ public class Payment {
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
-    private Customer customer;
+    private User customer;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
