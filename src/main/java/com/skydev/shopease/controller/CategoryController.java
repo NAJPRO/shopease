@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
-@RequestMapping("categories")
+@RequestMapping("admin/categories")
 public class CategoryController {
     private CategoryService categoryService;
 
@@ -48,6 +48,7 @@ public class CategoryController {
     
     @PostMapping
     public CategoryResponseDTO store(@RequestBody CategoryRequestDTO dto) {
+        System.out.println("Lancement");
         return this.categoryService.store(dto);
     }
 

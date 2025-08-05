@@ -12,6 +12,7 @@ public class TestController {
 
     @GetMapping
     public String index() {
+        System.out.println("Bonjoiur le monde");
         return new String("Tout fonction à merveille");
     }
     

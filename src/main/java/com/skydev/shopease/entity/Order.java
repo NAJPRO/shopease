@@ -48,9 +48,9 @@ public class Order {
     private OrderStatus status = OrderStatus.PENDING;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
-    private User customer;
+    private User user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference

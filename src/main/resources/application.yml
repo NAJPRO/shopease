@@ -2,18 +2,25 @@ spring:
   application:
     name: shopease
   datasource:
-    url: jdbc:mysql://localhost:3306/shopease_db # Mets l'URL correcte vers ta BDD
-    username: skydev
+    url: jdbc:mariadb://localhost:3307/shopease_db # Mets l'URL correcte vers ta BDD
+    username: root
     password: skydev
-    driver-class-name: com.mysql.cj.jdbc.Driver # Indique bien le driver MySQL
+    driver-class-name: org.mariadb.jdbc.Driver # Indique bien le driver MySQL
   jpa:
     show-sql: true
     hibernate:
       ddl-auto: update # "create-drop" détruit la BDD à chaque redémarrage, préfères "update" pour commencer
     properties:
       hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
         format_sql: true # Pour un SQL plus lisible dans la console
 
 server:
   servlet:
     context-path: /api # Parfait, ton API sera accessible avec ce préfixe
+
+
+security:
+  jwt:
+    secret-key: "YXVkaW4tanVuaW9yLXNlY3JldC1rZXktc2hvcGVhc2UtYXBpLXNwcmluZy1ib290"
+    expiration-time: 3600000 # 1h en millisecondes

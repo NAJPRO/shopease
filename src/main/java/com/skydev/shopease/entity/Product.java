@@ -51,7 +51,7 @@ public class Product {
     @Column(unique = true, nullable = false)
     private String slug;
 
-    private boolean isFeatured = false;
+    private boolean featured = false;
 
     @Column(nullable = false)
     private boolean isActive = true;
