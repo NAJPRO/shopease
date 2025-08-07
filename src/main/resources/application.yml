@@ -9,7 +9,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: update # "create-drop" détruit la BDD à chaque redémarrage, préfères "update" pour commencer
+      ddl-auto: create-drop # "create-drop" détruit la BDD à chaque redémarrage, préfères "update" pour commencer
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MariaDBDialect

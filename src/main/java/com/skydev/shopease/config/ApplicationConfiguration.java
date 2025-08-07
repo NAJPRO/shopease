@@ -12,16 +12,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import com.skydev.shopease.repository.UserRepository;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Configuration
+@Slf4j
 @AllArgsConstructor
 public class ApplicationConfiguration {
     private final UserRepository userRepository;
 
     @Bean
     UserDetailsService userDetailsService() {
-        return userName -> userRepository.findByEmail(userName)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return email -> {
+            log.info("USERNAME extracted from JWT: {}", email);
+
+            log.info("USERNAME: {}", email);
+            return userRepository.findByEmail(email)
+                    .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        };
     }
 
     @Bean
@@ -37,7 +44,7 @@ public class ApplicationConfiguration {
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         var authProvider = new DaoAuthenticationProvider(userDetailsService());
-        authProvider.setPasswordEncoder(passwordEncoder()); 
+        authProvider.setPasswordEncoder(passwordEncoder());
         return authProvider;
     }
 

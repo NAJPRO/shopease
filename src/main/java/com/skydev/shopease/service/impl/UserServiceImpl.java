@@ -18,11 +18,9 @@ import org.springframework.stereotype.Service;
 import com.skydev.shopease.dto.request.auth.AuthRequest;
 import com.skydev.shopease.dto.request.auth.RegisterRequest;
 import com.skydev.shopease.dto.response.AuthResponse;
-import com.skydev.shopease.dto.response.UserResponse;
 import com.skydev.shopease.entity.Role;
 import com.skydev.shopease.entity.User;
 import com.skydev.shopease.enums.UserRole;
-import com.skydev.shopease.mapper.AuthMapper;
 import com.skydev.shopease.repository.RoleRepository;
 import com.skydev.shopease.repository.UserRepository;
 import com.skydev.shopease.service.JwtService;
@@ -40,15 +38,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private final AuthMapper authMapper;
 
     /**
      * Enregistre un nouvel utilisateur
      */
     @Override
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByUsername(request.getUsername())) {
-            throw new RuntimeException("Username already taken");
+        if (userRepository.existsByName(request.getName())) {
+            throw new RuntimeException("Name already taken");
         }
 
         if (userRepository.existsByEmail(request.getEmail())) {
@@ -59,7 +56,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .orElseThrow(() -> new RuntimeException("Role not found"));
 
         User user = User.builder()
-                .username(request.getUsername())
+                .name(request.getName())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .roles(Set.of(customerRole)) // 👈 à adapter selon ta logique (CUSTOMER, ADMIN, etc.)
@@ -70,7 +67,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return AuthResponse.builder()
                 .token(token)
                 .id(user.getId())
-                .username(user.getUsername())
+                .name(user.getName())
                 .email(user.getEmail())
                 .roles(user.getRoles().stream()
                         .map(role -> role.getName().name())
@@ -97,7 +94,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return AuthResponse.builder()
                 .token(token)
                 .id(user.getId())
-                .username(user.getUsername())
+                .name(user.getName())
                 .email(user.getEmail())
                 .roles(user.getRoles().stream()
                         .map(role -> role.getName().name())
@@ -109,9 +106,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
      * Chargement d’un utilisateur pour Spring Security
      */
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé avec l'email : " + username));
+    public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+        return userRepository.findByEmail(name)
+                .orElseThrow(() -> new UsernameNotFoundException("Utilisateur non trouvé avec l'email : " + name));
     }
 
     public User getUserByEmail(String email) {

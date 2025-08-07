@@ -49,12 +49,12 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
             if (jwtService.isTokenValid(jwt, userDetails)) {
 
-                // 🔐 Récupérer les rôles du token
+                // Récupérer les rôles du token
                 var claims = jwtService.extractAllClaims(jwt);
                 List<String> roles = claims.get("roles", List.class);
 
                 List<SimpleGrantedAuthority> authorities = roles.stream()
-                        .map(role -> new SimpleGrantedAuthority("ROLE_" + role)) // Assure que le rôle a le préfixe
+                        .map(SimpleGrantedAuthority::new) // Assure que le rôle a le préfixe
                         .collect(Collectors.toList());
 
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,

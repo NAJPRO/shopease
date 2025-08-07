@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.skydev.shopease.dto.request.auth.AuthRequest;
 import com.skydev.shopease.dto.request.auth.RegisterRequest;
 import com.skydev.shopease.dto.response.AuthResponse;
-import com.skydev.shopease.mapper.AuthMapper;
 import com.skydev.shopease.service.JwtService;
 import com.skydev.shopease.service.UserService;
 

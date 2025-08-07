@@ -3,21 +3,18 @@ package com.skydev.shopease.dto.response;
 import java.util.Set;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@Builder
-@NoArgsConstructor
-public class AuthResponse {
-    private String token;
+public class UserResponseDTO {
     private Long id;
     private String name;
     private String email;
+    private String phone;
     private Set<String> roles;
 }

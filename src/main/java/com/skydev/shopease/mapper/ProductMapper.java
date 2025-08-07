@@ -8,7 +8,7 @@ import com.skydev.shopease.dto.request.ProductRequestDTO;
 import com.skydev.shopease.dto.response.ProductResponseDTO;
 import com.skydev.shopease.entity.Product;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {UserMapper.class, CategoryMapper.class, StockMapper.class})
 public interface ProductMapper {
 
     Product toEntity(ProductRequestDTO dto);

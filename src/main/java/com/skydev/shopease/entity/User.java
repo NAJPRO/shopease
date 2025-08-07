@@ -50,8 +50,8 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String username;
+    @Column(nullable = false, unique = true, name = "name")
+    private String name;
 
     @Column(nullable = false, unique = true, length = 100)
     private String email;
@@ -111,4 +111,10 @@ public class User implements UserDetails {
         // TODO Auto-generated method stub
         return UserDetails.super.isEnabled();
     }
+
+    @Override
+    public String getUsername() {
+        return this.email;
+    }
+
 }
